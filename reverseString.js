@@ -5,7 +5,7 @@ function reverseString(str) {
     //     reverse = char + reverse;
     // }
 
-    for (let i = str.length; i > -1; i--) {
+    for (let i = str.length - 1; i > -1; i--) {
         let char = str[i];
         reverse = reverse + char;
     }
