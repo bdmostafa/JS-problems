@@ -20,6 +20,7 @@ function feetToMile(feet) {
     }
 }
 
+// Checking the possible inputs
 console.log(feetToMile(-500));
 console.log(feetToMile('change my feet'));
 console.log(feetToMile(500));
@@ -47,6 +48,7 @@ function woodCalculator(chair, table, bed) {
     }
 }
 
+// Checking the possible inputs
 console.log(woodCalculator(12, -2, 1));
 console.log(woodCalculator(12, 'table', 1));
 console.log(woodCalculator(12, 2, 1));
@@ -61,46 +63,58 @@ Requirements & tasks to be done:
     output - bricks number
 */
 function brickCalculator(floors) {
-    var feets = 1;
+    var feets = 1; // Initialize 1 because feets for multiplication
     let feetsOfTen = 15 * 10;
     let feetsOfTwenty = feetsOfTen + (12 * 10);
-    let bricksCount;
-    let Totalbricks = 0;
+    let Totalbricks;
+
+    if (floors <= 0) {
+        return 'Floors must not be zero or negative. Please try again!';
+    } else if (floors <= 10) {
+        feets = floors * 15;
+        Totalbricks = feets * 1000;
+        return Totalbricks;
+    } else if (floors <= 20) {
+        feets = feetsOfTen + ((floors - 10) * 12);
+        Totalbricks = feets * 1000;
+        return Totalbricks;
+    } else if (floors > 20) {
+        feets = feetsOfTwenty + ((floors - 20) * 10);
+        Totalbricks = feets * 1000;
+        return Totalbricks;
+    } else return `${floors} is not a number. It must be a number, not a string. Please try again!`;
+
+
+    // Brick calculator - another solution by switch case
     switch (floors) {
-        case (floors < 0 && floors):
-            console.log(`${floors} floors must not be negative. Please try again!`);
+        case (floors <= 0 && floors):
+            console.log('Floors must not be zero or negative. Please try again!');
             break;
-            // case 0:
-            //     feets = 1 * 15;
-            //     bricksCount = feets * 1000;
-            //     Totalbricks = Totalbricks + bricksCount
-            //     console.log(Totalbricks)
-            //     break;
         case (floors <= 10 && floors):
             feets = floors * 15;
-            bricksCount = feets * 1000;
-            Totalbricks = Totalbricks + bricksCount
-            console.log(Totalbricks)
+            Totalbricks = feets * 1000;
+            console.log(Totalbricks);
             break;
         case (floors <= 20 && floors):
             feets = feetsOfTen + ((floors - 10) * 12);
-            bricksCount = feets * 1000;
-            Totalbricks = Totalbricks + bricksCount
-            console.log(Totalbricks)
+            Totalbricks = feets * 1000;
+            console.log(Totalbricks);
             break;
         case (floors > 20 && floors):
             feets = feetsOfTwenty + ((floors - 20) * 10);
-            bricksCount = feets * 1000;
-            Totalbricks = Totalbricks + bricksCount
-            console.log(Totalbricks)
+            Totalbricks = feets * 1000;
+            console.log(Totalbricks);
             break;
         default:
-            console.log(`${floors} floors input is not valid. Please try again!`)
+            console.log(`${floors} is not a number. It must be a number, not a string. Please try again!`)
     }
 }
-brickCalculator('brick');
-brickCalculator(-25);
-brickCalculator(25);
+
+// Checking the possible inputs
+console.log(brickCalculator('abc'));
+console.log(brickCalculator());
+console.log(brickCalculator(-25));
+console.log(brickCalculator(25));
 
 /* 4. Tiny Friend - the lowest friend from an array ================================
 Requirements & tasks to be done:
@@ -129,6 +143,7 @@ let friendsEmpty = [];
 let friendsUndefined;
 let friends = ['Jhankar Mahbub', 'Mostafa', 'Tiny', 'Yeasin', 'Vue', 'Yo', 'Mahmud'];
 
+// Checking the possible inputs
 console.log(tinyFriend(friendsEmpty));
 console.log(tinyFriend(friendsUndefined));
 console.log(tinyFriend(friends));
