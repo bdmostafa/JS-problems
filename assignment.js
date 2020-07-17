@@ -7,8 +7,11 @@ Requirements & tasks to be done:
     output - mile
  */
 function feetToMile(feet) {
+    // input validation whether it is negative or string or positive integer
     if (feet < 0) {
-        return `This ${feet} negative value is not valid for distance. Please input a positive number.`
+        return `This ${feet} negative value is not valid for distance. Please input a positive number!`
+    } else if (isNaN(feet)) {
+        return `This "${feet}" is not an integer. Please input an integer!`
     } else {
         let mile = feet / 5280;
         // Displaying 4 decimal places
@@ -16,7 +19,9 @@ function feetToMile(feet) {
         return `${feet} feet = ${resultMile} mile`
     }
 }
+
 console.log(feetToMile(-500));
+console.log(feetToMile('change my feet'));
 console.log(feetToMile(500));
 
 /* 2. Wood Calculator in chair, table and bed ==================================
@@ -27,21 +32,21 @@ Requirements & tasks to be done:
     output - cubic feet
 */
 function woodCalculator(chair, table, bed) {
-    // Input validation
+    // Input validation for negative and string
     if (chair < 0 || table < 0 || bed < 0) {
         return 'Negative value is not allowed. Please input a positive number.'
-    } else if (isNaN(chair) || typeof (table) !== 'number' || isNaN(bed)) {
-        // Both usages of isNan() and typeof() for validation
-        return 'Please input a valid number, not string';
+    } else if (typeof (chair) !== 'number' || typeof (table) !== 'number' || typeof (bed) !== 'number') {
+        // Both usages of isNan() and typeof()
+        return 'Please input a valid number, not a string';
     } else {
-        // As 1 chair = 1 cubic feet, no need to create extra variable
+        // As 1 chair = 1 cubic feet, there is no need to create extra variable for chair cubic feet
         let tableCubicFeet = table * 3;
         let bedCubicFeet = bed * 5;
         let totalCubicFeet = chair + tableCubicFeet + bedCubicFeet;
         return `Total cubic feet is ${totalCubicFeet}`;
     }
-
 }
+
 console.log(woodCalculator(12, -2, 1));
 console.log(woodCalculator(12, 'table', 1));
 console.log(woodCalculator(12, 2, 1));
