@@ -16,6 +16,7 @@ function feetToMile(feet) {
         return `${feet} feet = ${resultMile} mile`
     }
 }
+console.log(feetToMile(-500));
 console.log(feetToMile(500));
 
 /* 2. Wood Calculator in chair, table and bed ==================================
@@ -30,7 +31,7 @@ function woodCalculator(chair, table, bed) {
     if (chair < 0 || table < 0 || bed < 0) {
         return 'Negative value is not allowed. Please input a positive number.'
     } else if (isNaN(chair) || typeof (table) !== 'number' || isNaN(bed)) {
-        // Both usages of isNan() and typeof()
+        // Both usages of isNan() and typeof() for validation
         return 'Please input a valid number, not string';
     } else {
         // As 1 chair = 1 cubic feet, no need to create extra variable
@@ -45,7 +46,7 @@ console.log(woodCalculator(12, -2, 1));
 console.log(woodCalculator(12, 'table', 1));
 console.log(woodCalculator(12, 2, 1));
 
-/* 3. Brick Calculator in building ==============================
+/* 3. Brick Calculator in a building ==============================
 Requirements & tasks to be done:
     input - building floors,
     negative floor not allowed,
@@ -54,18 +55,66 @@ Requirements & tasks to be done:
     every feet need 1000 bricks constantly,
     output - bricks number
 */
-function brickCalculator() {
+function brickCalculator(floors) {
+    var bricks = 1;
+    var feets = 1;
+    switch (floors) {
+        case 0:
+            feets = 1 * 15;
+            bricksCount = feets * 1000;
+            bricks = bricks + bricksCount
+            break;
+        case (floors <= 10 && floors > 0):
+            feets = floor * 15;
+            bricksCount = feets * 1000;
+            bricks = bricks + bricksCount
+            break;
+        case (floors <= 20 && floors >= 11):
+            feets = floor * 12;
+            bricksCount = feets * 1000;
+            bricks = bricks + bricksCount
+            break;
+        case (floors > 20):
+            feets = floor * 10;
+            bricksCount = feets * 1000;
+            bricks = bricks + bricksCount
+            break;
+        default:
+            bricks = `${floors} floors is not valid. Please try again!`
 
+    }
+    // return bricks;
 }
+const bricksResult = brickCalculator(-8);
+console.log(bricksResult);
 
 /* 4. Tiny Friend - the lowest friend from an array ================================
 Requirements & tasks to be done:
     input - an array of friends' list,
-    empty array not allowed,
+    empty array or undefined is not allowed,
     compare the length of every element/string in the array
     find out the lowest string from them
     output - the lowest friend
 */
-function tinyFriend() {
+function tinyFriend(friends) {
+    // Validation when array is empty or undefined
+    if (friends === undefined || friends.length < 1) {
+        return 'The list is empty or undefined. Please try again!';
+    } else {
+        let lowestFriend = friends[0];
 
+        for (let i = 0; i < friends.length; i++) {
+            if (friends[i].length < lowestFriend.length) {
+                lowestFriend = friends[i];
+            }
+        }
+        return lowestFriend;
+    }
 }
+let friendsEmpty = [];
+let friendsUndefined;
+let friends = ['Jhankar Mahbub', 'Mostafa', 'Tiny', 'Yeasin', 'Vue', 'Yo', 'Mahmud'];
+
+console.log(tinyFriend(friendsEmpty));
+console.log(tinyFriend(friendsUndefined));
+console.log(tinyFriend(friends));
