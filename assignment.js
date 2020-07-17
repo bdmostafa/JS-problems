@@ -61,37 +61,46 @@ Requirements & tasks to be done:
     output - bricks number
 */
 function brickCalculator(floors) {
-    var bricks = 1;
     var feets = 1;
+    let feetsOfTen = 15 * 10;
+    let feetsOfTwenty = feetsOfTen + (12 * 10);
+    let bricksCount;
+    let Totalbricks = 0;
     switch (floors) {
-        case 0:
-            feets = 1 * 15;
-            bricksCount = feets * 1000;
-            bricks = bricks + bricksCount
+        case (floors < 0 && floors):
+            console.log(`${floors} floors must not be negative. Please try again!`);
             break;
-        case (floors <= 10 && floors > 0):
-            feets = floor * 15;
+            // case 0:
+            //     feets = 1 * 15;
+            //     bricksCount = feets * 1000;
+            //     Totalbricks = Totalbricks + bricksCount
+            //     console.log(Totalbricks)
+            //     break;
+        case (floors <= 10 && floors):
+            feets = floors * 15;
             bricksCount = feets * 1000;
-            bricks = bricks + bricksCount
+            Totalbricks = Totalbricks + bricksCount
+            console.log(Totalbricks)
             break;
-        case (floors <= 20 && floors >= 11):
-            feets = floor * 12;
+        case (floors <= 20 && floors):
+            feets = feetsOfTen + ((floors - 10) * 12);
             bricksCount = feets * 1000;
-            bricks = bricks + bricksCount
+            Totalbricks = Totalbricks + bricksCount
+            console.log(Totalbricks)
             break;
-        case (floors > 20):
-            feets = floor * 10;
+        case (floors > 20 && floors):
+            feets = feetsOfTwenty + ((floors - 20) * 10);
             bricksCount = feets * 1000;
-            bricks = bricks + bricksCount
+            Totalbricks = Totalbricks + bricksCount
+            console.log(Totalbricks)
             break;
         default:
-            bricks = `${floors} floors is not valid. Please try again!`
-
+            console.log(`${floors} floors input is not valid. Please try again!`)
     }
-    // return bricks;
 }
-const bricksResult = brickCalculator(-8);
-console.log(bricksResult);
+brickCalculator('brick');
+brickCalculator(-25);
+brickCalculator(25);
 
 /* 4. Tiny Friend - the lowest friend from an array ================================
 Requirements & tasks to be done:
